@@ -1,0 +1,50 @@
+function ListNode(val, next) {
+      this.val = (val===undefined ? 0 : val)
+      this.next = (next===undefined ? null : next)
+  }
+
+myLinkedlist = new ListNode(10);
+myLinkedlist.next =  new ListNode(11);
+myLinkedlist.next.next =  new ListNode(11);
+myLinkedlist.next.next.next =  new ListNode(12);
+
+
+
+Append at the end:
+var cn = myLinkedlist;
+while(cn.next !== null){
+    cn = cn.next;
+}
+cn.next = new ListNode(15);
+
+
+
+Remove the duplicates:
+var cn = myLinkedlist;
+while(cn.next !== null){
+    if(cn.val == cn.next.val)
+       cn.next = cn.next.next;
+    else
+        cn = cn.next; 
+}
+
+
+
+Merge two sorted list:
+var myNewList = new ListNode();
+var head = myNewList;
+while(myList1 && myList2){
+    if(myList1.val < myList2.val){
+        myNewList.next = myList1;
+        myList1 = myList1.next;
+        myNewList = myNewList.next;
+    } else {
+        myNewList.next = myList2;
+        myList2 = myList2.next;
+        myNewList = myNewList.next;
+    }   
+}
+if(myList1)
+myNewList.next = myList1;
+if(myList2)
+myNewList.next = myList2;
